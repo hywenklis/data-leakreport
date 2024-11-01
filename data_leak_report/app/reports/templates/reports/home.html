@@ -1,21 +1,178 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sistema de Denúncia de Vazamento de Dados</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #007bff;
+            margin: 10px auto;
+        }
+
+        .lead {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-icon {
+            font-size: 2rem;
+            color: #007bff;
+        }
+
+        .footer {
+            background-color: #f8f9fa;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .zoom-in {
+            transform: scale(0);
+            animation: zoomIn 0.6s forwards;
+        }
+
+        @keyframes zoomIn {
+            to {
+                transform: scale(1);
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <div class="container mt-5 text-center">
-        <div class="card shadow-lg p-4">
-            <h2 class="mb-4">Bem-vindo ao Sistema de Denúncia de Vazamento de Dados</h2>
-            <a href="{% url 'choose_identity' %}" class="btn btn-primary btn-lg">Registrar uma denúncia</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'choose_identity' %}">Registrar Denúncia</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">Sobre</a>
+                </li>
+            </ul>
         </div>
-    </div>
+    </nav>
+
+    <header class="text-center py-5 bg-primary text-white fade-in">
+        <div class="container">
+            <h1 class="display-4">Bem-vindo ao Sistema de Denúncia de Vazamento de Dados</h1>
+            <p class="lead">Sua voz é fundamental para a segurança de todos. Ajude-nos a proteger a privacidade!</p>
+            <a href="{% url 'choose_identity' %}" class="btn btn-light btn-lg">Registrar uma denúncia</a>
+        </div>
+    </header>
+
+    <section class="py-5">
+        <div class="container text-center fade-in">
+            <h2 class="section-title">Por que é importante denunciar?</h2>
+            <p class="lead">A denúncia de vazamentos de dados é um passo crucial para garantir a privacidade e a
+                segurança de todos. <b>Sua ação pode fazer a diferença!</b></p>
+            <p>Ao relatar um vazamento, você não apenas protege a si mesmo, mas também aqueles que podem estar em risco.
+                O nosso sistema é <b>totalmente confidencial</b> e respeita a sua privacidade. Não fique em silêncio; sua
+                voz importa!</p>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center fade-in">Como funciona o processo?</h2>
+            <p class="text-center lead fade-in">Registrar uma denúncia é simples e rápido:</p>
+            <ol class="text-left mx-auto fade-in" style="max-width: 600px;">
+                <li>Escolha se deseja se <b>identificar</b> ou permanecer <b>anônimo</b>.</li>
+                <li>Preencha o <b>formulário de denúncia</b> com as informações relevantes.</li>
+                <li>Envie sua denúncia. Você receberá um <b>identificador</b> para acompanhamento.</li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container text-center">
+            <h2 class="section-title mb-4 fade-in">Benefícios de Denunciar</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4 zoom-in">
+                        <div class="card-body">
+                            <i class="benefit-icon fas fa-shield-alt"></i>
+                            <h5 class="card-title">Proteção Pessoal</h5>
+                            <p class="card-text">Ajuda a proteger suas informações e as de outras pessoas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 zoom-in">
+                        <div class="card-body">
+                            <i class="benefit-icon fas fa-lock"></i>
+                            <h5 class="card-title">Ambiente Seguro</h5>
+                            <p class="card-text">Contribui para a criação de um ambiente digital mais seguro para todos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 zoom-in">
+                        <div class="card-body">
+                            <i class="benefit-icon fas fa-users"></i>
+                            <h5 class="card-title">Impacto Social</h5>
+                            <p class="card-text">Sua ação pode incentivar outros a fazerem o mesmo, criando uma rede de
+                                proteção.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer text-center py-4">
+        <div class="container">
+            <p class="m-0">© 2024 Sistema de Denúncia de Vazamento de Dados. <b>Todos os direitos reservados.</b></p>
+        </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
 </body>
+
 </html>

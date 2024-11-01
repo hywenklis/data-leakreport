@@ -5,30 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Fazer Denúncia</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            font-weight: 700;
+            color: #333;
+        }
+        .btn {
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-5">
-        <h2 class="text-center mb-4">Preencha sua Denúncia</h2>
-        <form method="post">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="id_name">Nome:</label>
-                <input type="text" name="name" id="id_name" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="id_email">E-mail:</label>
-                <input type="email" name="email" id="id_email" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="id_title">Título:</label>
-                <input type="text" name="title" id="id_title" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="id_description">Descrição:</label>
-                <textarea name="description" id="id_description" class="form-control" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Enviar Denúncia</button>
-        </form>
+        <div class="card p-4">
+            <h2 class="text-center mb-4">Preencha sua Denúncia</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id_name">Nome:</label>
+                    <input type="text" name="name" id="id_name" class="form-control" placeholder="Digite seu nome">
+                </div>
+                <div class="form-group">
+                    <label for="id_email">E-mail:</label>
+                    <input type="email" name="email" id="id_email" class="form-control" placeholder="Digite seu e-mail">
+                </div>
+                <div class="form-group">
+                    <label for="id_title">Título:</label>
+                    <input type="text" name="title" id="id_title" class="form-control" placeholder="Digite o título da denúncia" required>
+                </div>
+                <div class="form-group">
+                    <label for="id_description">Descrição:</label>
+                    <textarea name="description" id="id_description" class="form-control" placeholder="Descreva a denúncia" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Enviar Denúncia</button>
+            </form>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

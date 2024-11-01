@@ -22,3 +22,6 @@ def create_report(request, anonymous=False):
 
 def report_success(request, uuid):
     return render(request, 'reports/report_success.html', {'uuid': uuid})
+
+def about(request):
+    return render(request, 'reports/about.html')

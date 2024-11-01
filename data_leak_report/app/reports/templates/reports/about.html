@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sobre - Sistema de Denúncia de Vazamento de Dados</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .section-title {
+            font-weight: 700;
+            color: #333;
+            text-transform: uppercase;
+        }
+        p {
+            line-height: 1.6;
+        }
+        .bg-secondary {
+            background-color: #343a40 !important;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Sistema de Denúncia</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'choose_identity' %}">Registrar Denúncia</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">Sobre</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="text-center py-5 bg-secondary text-white">
+        <div class="container">
+            <h1 class="display-4">Sobre o Sistema de Denúncia</h1>
+            <p class="lead">Sua segurança e privacidade são nossa prioridade.</p>
+        </div>
+    </header>
+
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-4">Nossa Missão</h2>
+            <p>A nossa missão é proporcionar um canal seguro e confiável para que todos possam relatar vazamentos de dados de forma anônima e segura. Acreditamos que a transparência é essencial para a construção de um ambiente digital seguro e ético.</p>
+            <p>Estamos comprometidos em garantir que todos os relatos sejam tratados com a máxima seriedade e confidencialidade, promovendo um espaço onde cada voz pode ser ouvida. Juntos, podemos fazer a diferença!</p>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-4">Por que é Importante?</h2>
+            <p>A proteção de dados é um direito fundamental. Quando dados sensíveis são expostos, as consequências podem ser graves tanto para indivíduos quanto para organizações. Denunciar é um passo crucial para a prevenção de abusos e vazamentos futuros.</p>
+            <p>Com a sua ajuda, podemos tomar medidas proativas para evitar que vazamentos se tornem mais sérios, garantindo um ambiente digital mais seguro para todos. Cada denúncia é uma oportunidade de melhorar a segurança e a confiança em nossas plataformas. Sua voz conta!</p>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container text-center">
+            <h2 class="section-title mb-4">Participe da Mudança</h2>
+            <p>Convidamos você a se juntar a nós nessa luta pela segurança de dados. Sua denúncia pode ser a chave para prevenir futuros incidentes e proteger a privacidade de muitos. Juntos, podemos criar um futuro mais seguro!</p>
+            <a href="{% url 'choose_identity' %}" class="btn btn-primary btn-lg mt-3">Registrar uma Denúncia</a>
+        </div>
+    </section>
+
+    <footer class="bg-light text-center py-4">
+        <div class="container">
+            <p class="m-0">© 2024 Sistema de Denúncia de Vazamento de Dados. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
