@@ -78,7 +78,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'choose_identity' %}">Registrar Denúncia</a>
+                    <a class="nav-link" href="{% url 'choose_identity' %}">Registrar Denuncia</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'view_identified_reports' %}">Visualizar Denuncias</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'about' %}">Sobre</a>
@@ -86,7 +89,7 @@
             </ul>
         </div>
     </nav>
-
+    
     <header class="text-center py-5 bg-primary text-white fade-in">
         <div class="container">
             <h1 class="display-4">Bem-vindo ao Sistema de Denúncia de Vazamento de Dados</h1>

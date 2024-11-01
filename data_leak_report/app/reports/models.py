@@ -2,7 +2,7 @@ from django.db import models
 import uuid
 
 class Report(models.Model):
-    uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+    correlationId = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     title = models.CharField(max_length=200)
     description = models.TextField()
     name = models.CharField(max_length=100, blank=True, null=True)
