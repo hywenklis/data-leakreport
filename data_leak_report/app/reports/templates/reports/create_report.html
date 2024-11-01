@@ -2,14 +2,31 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Fazer Denúncia</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h2>Preencha sua denúncia</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Enviar Denúncia</button>
-    </form>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Preencha sua Denúncia</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_title">Título:</label>
+                <input type="text" name="title" id="id_title" class="form-control" placeholder="Título da denúncia" required>
+            </div>
+            <div class="form-group">
+                <label for="id_description">Descrição:</label>
+                <textarea name="description" id="id_description" class="form-control" rows="4" placeholder="Descreva sua denúncia" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+                Enviar Denúncia
+            </button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
