@@ -12,16 +12,22 @@
         <form method="post">
             {% csrf_token %}
             <div class="form-group">
+                <label for="id_name">Nome:</label>
+                <input type="text" name="name" id="id_name" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="id_email">E-mail:</label>
+                <input type="email" name="email" id="id_email" class="form-control">
+            </div>
+            <div class="form-group">
                 <label for="id_title">Título:</label>
-                <input type="text" name="title" id="id_title" class="form-control" placeholder="Título da denúncia" required>
+                <input type="text" name="title" id="id_title" class="form-control" required>
             </div>
             <div class="form-group">
                 <label for="id_description">Descrição:</label>
-                <textarea name="description" id="id_description" class="form-control" rows="4" placeholder="Descreva sua denúncia" required></textarea>
+                <textarea name="description" id="id_description" class="form-control" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">
-                Enviar Denúncia
-            </button>
+            <button type="submit" class="btn btn-primary">Enviar Denúncia</button>
         </form>
     </div>
 
