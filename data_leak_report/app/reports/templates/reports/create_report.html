@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Fazer Denúncia</title>
+</head>
+<body>
+    <h2>Preencha sua denúncia</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Enviar Denúncia</button>
+    </form>
+</body>
+</html>
