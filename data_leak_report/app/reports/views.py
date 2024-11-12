@@ -23,9 +23,6 @@ def create_report(request, anonymous=False):
 def report_success(request, correlationId):
     return render(request, 'reports/report_success.html', {'correlationId': correlationId})
 
-def about(request):
-    return render(request, 'reports/about.html')
-
 def view_reports(request):
     return render(request, 'view_reports.html')
 

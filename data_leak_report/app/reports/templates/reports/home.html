@@ -4,18 +4,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sistema de Denúncia de Vazamento de Dados</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>{% block title %}Secure Report{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+
     <style>
+        :root {
+            --primary: #007bff;
+            --primary-dark: #0056b3;
+            --light-bg: #f8f9fa;
+        }
+
         body {
             font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            background-color: var(--light-bg);
+            margin-top: 70px;
+        }
+
+        .navbar {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #dc3545;
+            /* Cor do botão de denunciar */
+            background-color: rgba(220, 53, 69, 0.1);
+            /* Fundo levemente destacado */
+            border-radius: 5px;
+            /* Arredondando as bordas */
+            padding: 0.5rem 1rem;
+            /* Ajustando o padding */
+            transition: background-color 0.3s;
+            /* Efeito ao passar o mouse */
+        }
+
+        .highlight:hover {
+            background-color: rgba(220, 53, 69, 0.2);
+            /* Efeito ao passar o mouse */
+            color: #fff;
+            /* Mudando a cor do texto ao passar o mouse */
+        }
+
+        /* Estilizando os links da navbar */
+        .navbar-nav .nav-item .nav-link {
+            transition: color 0.3s;
+            color: #333;
+            /* Cor padrão */
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+        }
+
+        .navbar-nav .nav-item .nav-link:hover {
+            color: var(--primary);
+            /* Cor ao passar o mouse */
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .hero-section {
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            padding: 6rem 0;
+            color: white;
         }
 
         .section-title {
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 2rem;
             position: relative;
         }
 
@@ -24,134 +87,111 @@
             display: block;
             width: 60px;
             height: 3px;
-            background: #007bff;
-            margin: 10px auto;
+            background: var(--primary);
+            margin: 1rem auto;
+            border-radius: 2px;
         }
 
-        .lead {
-            font-size: 1.25rem;
-            font-weight: 500;
-            margin-bottom: 1.5rem;
+        .card {
+            border: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .benefit-icon {
-            font-size: 2rem;
-            color: #007bff;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
         }
 
-        .footer {
-            background-color: #f8f9fa;
+        .btn-primary {
+            padding: 0.8rem 2rem;
+            font-weight: 500;
+            border-radius: 5px;
+            transition: all 0.3s ease;
         }
 
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.8s forwards;
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 123, 0.2);
         }
 
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .zoom-in {
-            transform: scale(0);
-            animation: zoomIn 0.6s forwards;
-        }
-
-        @keyframes zoomIn {
-            to {
-                transform: scale(1);
-            }
+        .process-list {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'choose_identity' %}">Registrar Denuncia</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'view_identified_reports' %}">Visualizar Denuncias</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'about' %}">Sobre</a>
-                </li>
-            </ul>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'view_identified_reports' %}">
+                            <i class="fas fa-eye"></i> Visualizar Denúncias
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link highlight" href="{% url 'choose_identity' %}">
+                            <i class="fas fa-exclamation-triangle"></i> Denunciar Agora
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
-    
-    <header class="text-center py-5 bg-primary text-white fade-in">
+
+    <header class="hero-section text-center">
         <div class="container">
-            <h1 class="display-4">Bem-vindo ao Sistema de Denúncia de Vazamento de Dados</h1>
-            <p class="lead">Sua voz é fundamental para a segurança de todos. Ajude-nos a proteger a privacidade!</p>
-            <a href="{% url 'choose_identity' %}" class="btn btn-light btn-lg">Registrar uma denúncia</a>
+            <h1 class="display-4">Denuncie Vazamento de Dados</h1>
+            <p class="lead">Proteja seus dados e a privacidade de todos.</p>
         </div>
     </header>
 
-    <section class="py-5">
-        <div class="container text-center fade-in">
-            <h2 class="section-title">Por que é importante denunciar?</h2>
-            <p class="lead">A denúncia de vazamentos de dados é um passo crucial para garantir a privacidade e a
-                segurança de todos. <b>Sua ação pode fazer a diferença!</b></p>
-            <p>Ao relatar um vazamento, você não apenas protege a si mesmo, mas também aqueles que podem estar em risco.
-                O nosso sistema é <b>totalmente confidencial</b> e respeita a sua privacidade. Não fique em silêncio;
-                sua
-                voz importa!</p>
-        </div>
-    </section>
-
-    <section class="py-5 bg-light">
+    <section id="features" class="py-5">
         <div class="container">
-            <h2 class="section-title text-center fade-in">Como funciona o processo?</h2>
-            <p class="text-center lead fade-in">Registrar uma denúncia é simples e rápido:</p>
-            <ol class="text-left mx-auto fade-in" style="max-width: 600px;">
-                <li>Escolha se deseja se <b>identificar</b> ou permanecer <b>anônimo</b>.</li>
-                <li>Preencha o <b>formulário de denúncia</b> com as informações relevantes.</li>
-                <li>Envie sua denúncia. Você receberá um <b>identificador</b> para acompanhamento.</li>
-            </ol>
-        </div>
-    </section>
-
-    <section class="py-5">
-        <div class="container text-center">
-            <h2 class="section-title mb-4 fade-in">Benefícios de Denunciar</h2>
+            <h2 class="section-title text-center">Funcionalidades</h2>
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card mb-4 zoom-in">
+                    <div class="card animate__animated animate__fadeInLeft">
                         <div class="card-body">
-                            <i class="benefit-icon fas fa-shield-alt"></i>
-                            <h5 class="card-title">Proteção Pessoal</h5>
-                            <p class="card-text">Ajuda a proteger suas informações e as de outras pessoas.</p>
+                            <div class="benefit-icon">🔒</div>
+                            <h5 class="card-title">Segurança</h5>
+                            <p class="card-text">Denúncias são tratadas de forma segura e confidencial.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card mb-4 zoom-in">
+                    <div class="card animate__animated animate__fadeInUp">
                         <div class="card-body">
-                            <i class="benefit-icon fas fa-lock"></i>
-                            <h5 class="card-title">Ambiente Seguro</h5>
-                            <p class="card-text">Contribui para a criação de um ambiente digital mais seguro para todos.
-                            </p>
+                            <div class="benefit-icon">📈</div>
+                            <h5 class="card-title">Relatórios</h5>
+                            <p class="card-text">Acompanhe o status da sua denúncia através de relatórios.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card mb-4 zoom-in">
+                    <div class="card animate__animated animate__fadeInRight">
                         <div class="card-body">
-                            <i class="benefit-icon fas fa-users"></i>
-                            <h5 class="card-title">Impacto Social</h5>
-                            <p class="card-text">Sua ação pode incentivar outros a fazerem o mesmo, criando uma rede de
-                                proteção.</p>
+                            <div class="benefit-icon">📞</div>
+                            <h5 class="card-title">Suporte</h5>
+                            <p class="card-text">Nossa equipe está disponível para ajudar a qualquer momento.</p>
                         </div>
                     </div>
                 </div>
@@ -159,24 +199,23 @@
         </div>
     </section>
 
-    <footer class="footer text-center py-4">
+    <section id="process" class="py-5">
         <div class="container">
-            <p class="m-0">© 2024 Sistema de Denúncia de Vazamento de Dados. <b>Todos os direitos reservados.</b></p>
+            <h2 class="section-title text-center">Como Funciona</h2>
+            <div class="process-list">
+                <ul>
+                    Preencha o formulário de denúncia com os dados necessários<br>
+                    Envie sua denúncia com um clique no botão<br>
+                    Acompanhe a resposta através do seu e-mail
+                </ul>
+            </div>
         </div>
+    </section>
+
+    <footer class="text-center py-4">
+        <p>© 2024 Secure Report. Todos os direitos reservados.</p>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const fadeElements = document.querySelectorAll('.fade-in');
-            fadeElements.forEach((el, index) => {
-                el.style.animationDelay = `${index * 0.1}s`;
-            });
-        });
-    </script>
 </body>
 
 </html>
